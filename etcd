@@ -1,0 +1,40 @@
+ 149  ls
+  150  history
+  151  kubectl get nodes
+  152  ls /etc/kubernetes/pki
+  153  ls /etc/kubernetes/pki/etcd
+  154  mkdir backup-certs
+  155  cp -r /etc/kubernetes/pki backup-certs
+  156  ls backup-certs
+  157  cd backup-certs
+  158  ls
+  159  cd pki
+  160  ls
+  161  cd
+  162  go get github.com/coreos/etcd/etcdctl
+  163  apt install golang-go
+  164  apt install gccgo-go
+  165  go get github.com/coreos/etcd/etcdctl
+  166  ETCDCTL_API=3 etcdctl snapshot save backup-etcd/snapshot.db --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key
+  167  apt install etcd-client
+  168  ls
+  169  cd backup-certs
+  170  ls
+  171  cd
+  172  ETCDCTL_API=3 etcdctl   --endpoints=https://127.0.0.1:2379   --cacert=/etc/kubernetes/pki/etcd/ca.crt   --cert=/etc/kubernetes/pki/etcd/server.crt   --key=/etc/kubernetes/pki/etcd/server.key   snapshot save /opt/backup/etcd.db
+  173  ETCDCTL_API=3 --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt --key=/etc/kubernetes/pki/etcd/healthcheck-client.key
+  174  ETCDCTL_API=3
+  175  ETCDCTL_API=3 etcdctl snapshot save backup-certs/snapshot.db --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key
+  176  ls
+  177  cd backup-certs
+  178  ls
+  179  cat snapshot.db
+  180  ls
+  181  cd
+  182  kubeadm reset -f
+  183  kubectl get nodes
+  184  cp -r backup-certs/pki/ /etc/kubernetes
+  185  ls /etc/kubernetes
+  186  ls /etc/kubernetes/pki
+  187  ETCDCTL_API=3 etcdctl snapshot restore backup-etcd/snapshot.db
+  188  ETCDCTL_API=3 etcdctl snapshot restore backup-certs/snapshot.db
