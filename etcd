@@ -51,5 +51,31 @@
   199  history
   
   
+  nitin sir
+    201  cd /opt/backup/
+  202  cd /opt/
+  203  ls
+  204  mkdir backup
+  205  cd
+  206  ETCDCTL_API=3 etcdctl snapshot save /opt/backup/etcd.db
+  207  ETCDCTL_API=3 etcdctl   --endpoints=https://127.0.0.1:2379   --cacert=/etc/kubernetes/pki/etcd/ca.crt   --cert=/etc/kubernetes/pki/etcd/server.crt   --key=/etc/kubernetes/pki/etcd/server.key   snapshot save /opt/backup/etcd.db
+  208  cd /opt/backup/
+  209  ls
+  210  cd
+  211  ETCDCTL_API=3 etcdctl --write-out=table snapshot status /opt/backup/etcd.db
+  212  ETCDCTL_API=3 etcdctl snapshot restore /opt/backup/etcd.d
+  213  ETCDCTL_API=3 etcdctl --data-dir /opt/etcd snapshot restore /opt/backup/etcd.db
+  214  cd /opt/etcd
+  215  ls
+  216  tree member
+  217  cd member
+  218  ls
+  219  cd snap
+  220  ls
+  221  cd
+  222  history
+
+  
+  
   
     
