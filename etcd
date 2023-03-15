@@ -38,3 +38,18 @@
   186  ls /etc/kubernetes/pki
   187  ETCDCTL_API=3 etcdctl snapshot restore backup-etcd/snapshot.db
   188  ETCDCTL_API=3 etcdctl snapshot restore backup-certs/snapshot.db
+  189  history
+  190  ls
+  191  tree default.etcd
+  192  apt install tree
+  193  tree default.etcd
+  194  mv default.etcd/member /var/lib/etcd
+  195  ls /var/lib/etcd
+  196  tree /var/lib/etcd
+  197  kubeadm init --ignore-preflight-errors=DirAvailable--var-lib-etcd
+  198  kubectl get nodes
+  199  history
+  
+  
+  
+    
